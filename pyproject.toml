@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "autospatialqc-api"
+version = "0.1.0"
+description = "API for the autospatialqc website, developed for the Ioannis Vlachos Noncoding Lab"
+authors = ["Aleks Bekker <abekker@bidmc.harvard.edu>"]
+readme = "README.md"
+packages = [{include = "autospatialqc_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+argon2-cffi = "^23.1.0"
+flask = "^3.0.2"
+flask-jwt-extended = "^4.6.0"
+mysql-connector-python = "^8.3.0"
+pydantic = "^2.6.1"
+python-dotenv = "^1.0.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"
+pyright = "^1.1.350"
+pytest = "^8.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
