@@ -12,7 +12,7 @@ Create a MySQL server with a user with adequate permissions for app execution.
 Modify the variables in the `.env.shared` file.
 This file is public-facing, so no confidential information should be stored in it.
 
-* `DB_DATABASE`: the SQL database on the host that contains all relevant API information. Throughout app scripts, this
+* `DB_NAME`: the SQL database on the host that contains all relevant API information. Throughout app scripts, this
   value is assumed to be 'autospatialqc'.
 * `DB_USERNAME`: the SQL user's username. Throughout app scripts, this value is assumed to be 'noncoding'.
 
