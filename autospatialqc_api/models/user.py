@@ -6,11 +6,19 @@ import pydantic
 
 
 class Permissions(IntFlag):
+    """Integer flag that represents a user permission."""
+
     NONE = 0
+
+    # Sample permissions
     GET_SAMPLE = auto()
     POST_SAMPLE = auto()
-    CHANGE_PASSWORD = auto()
     DELETE_SAMPLE = auto()
+
+    # Authentication permissions
+    CREATE_USER = auto()
+    CHANGE_PASSWORD = auto()
+
     # Add all new variants to the `from_str` method
 
     @classmethod
@@ -19,7 +27,7 @@ class Permissions(IntFlag):
 
         Arguments:
             permission_str (str): a string that represents the Permissions object. Valid strings are "get_sample",
-              "post_sample", "change_password", and "delete_sample"
+              "post_sample", "delete_sample", "create_user", and "change_password".
 
         Returns:
             The Permissions object associated with the string if it is valid, Permissions.NONE otherwise.
@@ -28,8 +36,9 @@ class Permissions(IntFlag):
         name_map = {
             "get_sample": Permissions.GET_SAMPLE,
             "post_sample": Permissions.POST_SAMPLE,
-            "change_password": Permissions.CHANGE_PASSWORD,
             "delete_sample": Permissions.DELETE_SAMPLE,
+            "create_user": Permissions.CREATE_USER,
+            "change_password": Permissions.CHANGE_PASSWORD,
             # Any string added here should also be added to the "permission_str" argument in the docstring
         }
 
@@ -40,7 +49,10 @@ class Permissions(IntFlag):
 
 
 class User(pydantic.BaseModel):
-    id: int | None = None
+    id: int
     email: str
     permissions: Permissions
-    authenticated: bool
+
+    authenticated: bool = False
+    first_name: str | None = None
+    last_name: str | None = None

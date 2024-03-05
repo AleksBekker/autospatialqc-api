@@ -4,16 +4,18 @@ import json
 from sys import argv
 
 from autospatialqc_api import Database, Sample
-from autospatialqc_api.environment import require_env
+from autospatialqc_api.environment import require_envs
 
 
 def main():
 
     db = Database(
-        host=require_env("DB_HOST"),
-        database=require_env("DB_DATABASE"),
-        username=require_env("DB_USERNAME"),
-        password=require_env("DB_PASSWORD"),
+        **require_envs(
+            host="DB_HOST",
+            database="DB_NAME",
+            username="DB_USERNAME",
+            password="DB_PASSWORD",
+        )
     )
 
     path = argv[1]

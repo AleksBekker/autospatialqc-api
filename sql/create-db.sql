@@ -26,6 +26,7 @@ INSERT INTO permissions (permission_name, description) VALUES
     ('get_sample', 'Allows getting a sample'),
     ('post_sample', 'Allows posting a sample'),
     ('delete_sample', 'Allows deleting a sample'),
+    ('create_user', 'Allows creating a new user'),
     ('change_password', 'Allows a user to change their own password');
 
 -- Create user to permissions table
