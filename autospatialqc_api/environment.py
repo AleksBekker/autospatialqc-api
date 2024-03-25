@@ -14,7 +14,6 @@ import os
 
 from dotenv import dotenv_values
 
-
 _dotenv_variables = {**dotenv_values(".env.shared"), **dotenv_values(".env.secret")}
 
 
