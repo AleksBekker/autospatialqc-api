@@ -64,3 +64,20 @@ def require_env(identifier: str) -> str:
         raise RequiredEnvironmentalUnprovided(identifier)
 
     return env_var
+
+
+def require_envs(*identifiers: str, **aliases: str) -> dict[str, str]:
+    """Require some environmental variables.
+
+    Arguments:
+        identifiers (str): list of environmental variable identifiers.
+        aliases (str): alias to variable mappings.
+
+    Returns:
+        An identifier -> value mapping of all of the environmental variables.
+
+    Raises:
+        RequiredEnvironmentalUnprovided: if any environmental variable is not provided.
+    """
+
+    return {var: require_env(var) for var in identifiers} | {alias: require_env(var) for alias, var in aliases.items()}

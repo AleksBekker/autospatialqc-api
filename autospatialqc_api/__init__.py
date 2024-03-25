@@ -12,14 +12,17 @@ Additionally, it directly exports the following objects:
 """
 
 import logging
+from http import HTTPStatus
 from typing import Any, Mapping
 
 import flask
+import pymysql
 from flask_jwt_extended import JWTManager
 
 from autospatialqc_api import models
-from autospatialqc_api.environment import require_env
+from autospatialqc_api.environment import require_env, require_envs
 from autospatialqc_api.models import Database, Permissions, Sample, User
+from autospatialqc_api.models.errors import ResponseError
 from autospatialqc_api.routes import authentication_blueprint, samples_blueprint
 
 __all__ = [
@@ -33,11 +36,14 @@ __all__ = [
 ]
 
 
-def create_app(test_config: Mapping[str, Any] | None = None):
+def create_app(test_config: Mapping[str, Any] | None = None) -> flask.Flask:
     """Create main Flask app.
 
     Arguments:
         test_config (Mapping[str, Any] | None): test configuration.
+
+    Returns:
+        The Flask app for the API.
     """
 
     app = flask.Flask(__name__, instance_relative_config=True)
@@ -66,11 +72,22 @@ def create_app(test_config: Mapping[str, Any] | None = None):
     def _():
         if "database" not in flask.g:
             flask.g.database = Database(
-                host=require_env("DB_HOST"),
-                database=require_env("DB_DATABASE"),
-                username=require_env("DB_USERNAME"),
-                password=require_env("DB_PASSWORD"),
+                **require_envs(
+                    host="DB_HOST",
+                    database="DB_NAME",
+                    username="DB_USERNAME",
+                    password="DB_PASSWORD",
+                )
             )
+
+    @app.errorhandler(ResponseError)
+    def _(error: ResponseError) -> flask.Response:
+        return error.response
+
+    @app.errorhandler(pymysql.Error)
+    def _(error: pymysql.Error) -> flask.Response:
+        logging.error(f"Unhandled PyMySQL error raised: {str(error)}.")
+        flask.abort(HTTPStatus.INTERNAL_SERVER_ERROR)
 
     app.register_blueprint(authentication_blueprint)
     app.register_blueprint(samples_blueprint)

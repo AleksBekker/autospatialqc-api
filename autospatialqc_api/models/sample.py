@@ -26,3 +26,27 @@ class Sample(pydantic.BaseModel):
     # Might be inferable
     transcripts_per_area: float
     transcripts_per_feature: float
+
+    @classmethod
+    def data_fields(cls) -> list[str]:
+        """Gets the list of the names of the most important data fields of a Sample."""
+
+        return [
+            "assay",
+            "tissue",
+            "area",
+            "assigned_transcripts",
+            "cell_count",
+            "cell_over25_count",
+            "complexity",
+            "false_discovery_rate",
+            "median_counts",
+            "median_genes",
+            "reference_correlation",
+            "sparsity",
+            "volume",
+            "x_transcript_count",
+            "y_transcript_count",
+            "transcripts_per_area",
+            "transcripts_per_feature",
+        ]
