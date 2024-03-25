@@ -7,9 +7,10 @@ Exported objects include:
     * Sample: class that represents the data for a sample.
     * User: class that represents a user.
 """
-from autospatialqc_api.models.user import Permissions, User
-from autospatialqc_api.models.sample import Sample
+
 from autospatialqc_api.models.database import Database
+from autospatialqc_api.models.sample import Sample
+from autospatialqc_api.models.user import Permissions, User
 
 __all__ = [
     "Database",
