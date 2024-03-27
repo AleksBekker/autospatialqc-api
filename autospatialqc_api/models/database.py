@@ -4,7 +4,6 @@ from operator import or_ as binary_or
 import argon2
 import pymysql.cursors
 
-from autospatialqc_api.models import Permissions, Sample, User
 from autospatialqc_api.models.errors import (
     InvalidCredentials,
     SampleNameCollision,
@@ -12,6 +11,8 @@ from autospatialqc_api.models.errors import (
     UserCollision,
     UserNotFound,
 )
+from autospatialqc_api.models.sample import Sample
+from autospatialqc_api.models.user import Permissions, User
 
 
 class Database:
@@ -103,7 +104,7 @@ class Database:
                     WHERE email = %s;
                 """
                 cursor.execute(sql, (email))
-                permissions = (Permissions.from_str(dictionary["permission_name"]) for dictionary in cursor.fetchall())
+                permissions = Permissions.from_str(*(dictionary["permission_name"] for dictionary in cursor.fetchall()))
 
         return reduce(binary_or, permissions, Permissions.NONE)
 
@@ -129,33 +130,7 @@ class Database:
 
             connection.commit()
 
-    def get_sample(self, assay: str, tissue: str) -> Sample:
-        """Gets a sample from the database.
-
-        Arguments:
-            assay (str): the assay to search for.
-            tissue (str): the tissue to search for.
-
-        Return:
-            The unique sample with assay `assay` and tissue `tissue`.
-
-        Raises:
-            SampleNotFound: if no sample has `assay` and `tissue`.
-        """
-
-        with self.connection() as connection:
-            with connection.cursor() as cursor:
-                cursor.execute(
-                    "SELECT * FROM samples WHERE assay = %s and tissue = %s",
-                    (assay, tissue),
-                )
-
-                if (results := cursor.fetchone()) is None:
-                    raise SampleNotFound(assay, tissue)
-
-        return Sample.model_validate(results)
-
-    def insert_sample(self, sample: Sample):
+    def add_sample(self, sample: Sample):
         """Post a sample to the database.
 
         Arguments:
@@ -212,6 +187,32 @@ class Database:
 
             connection.commit()
 
+    def get_sample(self, assay: str, tissue: str) -> Sample:
+        """Gets a sample from the database.
+
+        Arguments:
+            assay (str): the assay to search for.
+            tissue (str): the tissue to search for.
+
+        Return:
+            The unique sample with assay `assay` and tissue `tissue`.
+
+        Raises:
+            SampleNotFound: if no sample has `assay` and `tissue`.
+        """
+
+        with self.connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "SELECT * FROM samples WHERE assay = %s and tissue = %s",
+                    (assay, tissue),
+                )
+
+                if (results := cursor.fetchone()) is None:
+                    raise SampleNotFound(assay, tissue)
+
+        return Sample.model_validate(results)
+
     def add_permissions(self, user: User, permissions: list[str]):
         """Add permissions to a user.
 
@@ -239,7 +240,7 @@ class Database:
 
             connection.commit()
 
-    def remove_permissions(self, user: User, permissions: list[str]):
+    def delete_permissions(self, user: User, permissions: list[str]):
         """Remove permissions from a user.
 
         Arguments:

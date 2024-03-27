@@ -24,7 +24,7 @@ def main():
 
     for dictionary in data:
         sample = Sample.model_validate(dictionary)
-        db.insert_sample(sample)
+        db.add_sample(sample)
         print(f"Sample ({sample.assay}, {sample.tissue}) successfully added.")
 
 

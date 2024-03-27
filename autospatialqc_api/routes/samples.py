@@ -49,7 +49,7 @@ def post_sample(request: Request, user: User, database: Database) -> Response:
     data = require_data(request, *Sample.data_fields())
 
     try:
-        database.insert_sample(Sample.model_validate(data))
+        database.add_sample(Sample.model_validate(data))
     except ValidationError as e:
         raise ResponseError.make_response("Sample could not be validated.", HTTPStatus.BAD_REQUEST, str(e))
     except SampleNameCollision as e:
