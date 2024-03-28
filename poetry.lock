@@ -240,6 +240,60 @@ files = [
 ]
 
 [[package]]
+name = "cryptography"
+version = "42.0.5"
+description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "cryptography-42.0.5-cp37-abi3-macosx_10_12_universal2.whl", hash = "sha256:a30596bae9403a342c978fb47d9b0ee277699fa53bbafad14706af51fe543d16"},
+    {file = "cryptography-42.0.5-cp37-abi3-macosx_10_12_x86_64.whl", hash = "sha256:b7ffe927ee6531c78f81aa17e684e2ff617daeba7f189f911065b2ea2d526dec"},
+    {file = "cryptography-42.0.5-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2424ff4c4ac7f6b8177b53c17ed5d8fa74ae5955656867f5a8affaca36a27abb"},
+    {file = "cryptography-42.0.5-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:329906dcc7b20ff3cad13c069a78124ed8247adcac44b10bea1130e36caae0b4"},
+    {file = "cryptography-42.0.5-cp37-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:b03c2ae5d2f0fc05f9a2c0c997e1bc18c8229f392234e8a0194f202169ccd278"},
+    {file = "cryptography-42.0.5-cp37-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:f8837fe1d6ac4a8052a9a8ddab256bc006242696f03368a4009be7ee3075cdb7"},
+    {file = "cryptography-42.0.5-cp37-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:0270572b8bd2c833c3981724b8ee9747b3ec96f699a9665470018594301439ee"},
+    {file = "cryptography-42.0.5-cp37-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:b8cac287fafc4ad485b8a9b67d0ee80c66bf3574f655d3b97ef2e1082360faf1"},
+    {file = "cryptography-42.0.5-cp37-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:16a48c23a62a2f4a285699dba2e4ff2d1cff3115b9df052cdd976a18856d8e3d"},
+    {file = "cryptography-42.0.5-cp37-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:2bce03af1ce5a5567ab89bd90d11e7bbdff56b8af3acbbec1faded8f44cb06da"},
+    {file = "cryptography-42.0.5-cp37-abi3-win32.whl", hash = "sha256:b6cd2203306b63e41acdf39aa93b86fb566049aeb6dc489b70e34bcd07adca74"},
+    {file = "cryptography-42.0.5-cp37-abi3-win_amd64.whl", hash = "sha256:98d8dc6d012b82287f2c3d26ce1d2dd130ec200c8679b6213b3c73c08b2b7940"},
+    {file = "cryptography-42.0.5-cp39-abi3-macosx_10_12_universal2.whl", hash = "sha256:5e6275c09d2badf57aea3afa80d975444f4be8d3bc58f7f80d2a484c6f9485c8"},
+    {file = "cryptography-42.0.5-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e4985a790f921508f36f81831817cbc03b102d643b5fcb81cd33df3fa291a1a1"},
+    {file = "cryptography-42.0.5-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7cde5f38e614f55e28d831754e8a3bacf9ace5d1566235e39d91b35502d6936e"},
+    {file = "cryptography-42.0.5-cp39-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:7367d7b2eca6513681127ebad53b2582911d1736dc2ffc19f2c3ae49997496bc"},
+    {file = "cryptography-42.0.5-cp39-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:cd2030f6650c089aeb304cf093f3244d34745ce0cfcc39f20c6fbfe030102e2a"},
+    {file = "cryptography-42.0.5-cp39-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:a2913c5375154b6ef2e91c10b5720ea6e21007412f6437504ffea2109b5a33d7"},
+    {file = "cryptography-42.0.5-cp39-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:c41fb5e6a5fe9ebcd58ca3abfeb51dffb5d83d6775405305bfa8715b76521922"},
+    {file = "cryptography-42.0.5-cp39-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:3eaafe47ec0d0ffcc9349e1708be2aaea4c6dd4978d76bf6eb0cb2c13636c6fc"},
+    {file = "cryptography-42.0.5-cp39-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:1b95b98b0d2af784078fa69f637135e3c317091b615cd0905f8b8a087e86fa30"},
+    {file = "cryptography-42.0.5-cp39-abi3-win32.whl", hash = "sha256:1f71c10d1e88467126f0efd484bd44bca5e14c664ec2ede64c32f20875c0d413"},
+    {file = "cryptography-42.0.5-cp39-abi3-win_amd64.whl", hash = "sha256:a011a644f6d7d03736214d38832e030d8268bcff4a41f728e6030325fea3e400"},
+    {file = "cryptography-42.0.5-pp310-pypy310_pp73-macosx_10_12_x86_64.whl", hash = "sha256:9481ffe3cf013b71b2428b905c4f7a9a4f76ec03065b05ff499bb5682a8d9ad8"},
+    {file = "cryptography-42.0.5-pp310-pypy310_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:ba334e6e4b1d92442b75ddacc615c5476d4ad55cc29b15d590cc6b86efa487e2"},
+    {file = "cryptography-42.0.5-pp310-pypy310_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:ba3e4a42397c25b7ff88cdec6e2a16c2be18720f317506ee25210f6d31925f9c"},
+    {file = "cryptography-42.0.5-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:111a0d8553afcf8eb02a4fea6ca4f59d48ddb34497aa8706a6cf536f1a5ec576"},
+    {file = "cryptography-42.0.5-pp39-pypy39_pp73-macosx_10_12_x86_64.whl", hash = "sha256:cd65d75953847815962c84a4654a84850b2bb4aed3f26fadcc1c13892e1e29f6"},
+    {file = "cryptography-42.0.5-pp39-pypy39_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:e807b3188f9eb0eaa7bbb579b462c5ace579f1cedb28107ce8b48a9f7ad3679e"},
+    {file = "cryptography-42.0.5-pp39-pypy39_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:f12764b8fffc7a123f641d7d049d382b73f96a34117e0b637b80643169cec8ac"},
+    {file = "cryptography-42.0.5-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:37dd623507659e08be98eec89323469e8c7b4c1407c85112634ae3dbdb926fdd"},
+    {file = "cryptography-42.0.5.tar.gz", hash = "sha256:6fe07eec95dfd477eb9530aef5bead34fec819b3aaf6c5bd6d20565da607bfe1"},
+]
+
+[package.dependencies]
+cffi = {version = ">=1.12", markers = "platform_python_implementation != \"PyPy\""}
+
+[package.extras]
+docs = ["sphinx (>=5.3.0)", "sphinx-rtd-theme (>=1.1.1)"]
+docstest = ["pyenchant (>=1.6.11)", "readme-renderer", "sphinxcontrib-spelling (>=4.0.1)"]
+nox = ["nox"]
+pep8test = ["check-sdist", "click", "mypy", "ruff"]
+sdist = ["build"]
+ssh = ["bcrypt (>=3.1.5)"]
+test = ["certifi", "pretend", "pytest (>=6.2.0)", "pytest-benchmark", "pytest-cov", "pytest-xdist"]
+test-randomorder = ["pytest-randomly"]
+
+[[package]]
 name = "distlib"
 version = "0.3.8"
 description = "Distribution utilities"
@@ -549,47 +603,6 @@ files = [
 ]
 
 [[package]]
-name = "mysql-connector-python"
-version = "8.3.0"
-description = "MySQL driver written in Python"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "mysql-connector-python-8.3.0.tar.gz", hash = "sha256:e4ff23aa8036b4c5b6463fa81398bb5a528a29f99955de6ba937f0bba57a2fe3"},
-    {file = "mysql_connector_python-8.3.0-cp310-cp310-macosx_13_0_arm64.whl", hash = "sha256:f4ee7e07cca6b744874d60d6b0b24817d9246eb4e8d7269b7ddbe68763a0bd13"},
-    {file = "mysql_connector_python-8.3.0-cp310-cp310-macosx_13_0_x86_64.whl", hash = "sha256:5718e426cf67f041772d4984f709052201883f74190ba6feaddce5cbd3b99e6f"},
-    {file = "mysql_connector_python-8.3.0-cp310-cp310-manylinux_2_17_aarch64.whl", hash = "sha256:0deb38f05057e12af091a48e03a1ff00e213945880000f802879fae5665e7502"},
-    {file = "mysql_connector_python-8.3.0-cp310-cp310-manylinux_2_17_x86_64.whl", hash = "sha256:4be4165e4cd5acb4659261ddc74e9164d2dfa0d795d5695d52f2bf39ea0762fa"},
-    {file = "mysql_connector_python-8.3.0-cp310-cp310-win_amd64.whl", hash = "sha256:51d97bf771519829797556718d81e8b9bdcd0a00427740ca57c085094c8bde17"},
-    {file = "mysql_connector_python-8.3.0-cp311-cp311-macosx_13_0_arm64.whl", hash = "sha256:5e2c86c60be08c71bae755d811fe8b89ec4feb8117ec3440ebc6c042dd6f06bc"},
-    {file = "mysql_connector_python-8.3.0-cp311-cp311-macosx_13_0_x86_64.whl", hash = "sha256:de74055944b214bff56e1752ec213d705c421414c67a250fb695af0c5c214135"},
-    {file = "mysql_connector_python-8.3.0-cp311-cp311-manylinux_2_17_aarch64.whl", hash = "sha256:b2901391b651d60dab3cc8985df94976fc1ea59fa7324c5b19d0a4177914c8dd"},
-    {file = "mysql_connector_python-8.3.0-cp311-cp311-manylinux_2_17_x86_64.whl", hash = "sha256:55cb57d8098c721abce20fdef23232663977c0e5c87a4d0f9f73466f32c7d168"},
-    {file = "mysql_connector_python-8.3.0-cp311-cp311-win_amd64.whl", hash = "sha256:201e609159b84a247be87b76f5deb79e8c6b368e91f043790e62077f13f3fed8"},
-    {file = "mysql_connector_python-8.3.0-cp312-cp312-macosx_13_0_arm64.whl", hash = "sha256:c57d02fd6c28be444487e7905ede09e3fecb18377cf82908ca262826369d3401"},
-    {file = "mysql_connector_python-8.3.0-cp312-cp312-macosx_13_0_x86_64.whl", hash = "sha256:9302d774025e76a0fac46bfeea8854b3d6819715a6a16ff23bfcda04218a76b7"},
-    {file = "mysql_connector_python-8.3.0-cp312-cp312-manylinux_2_17_aarch64.whl", hash = "sha256:85fa878fdd6accaeb7d609bd2637c2cfa61592e7f9bdbdc0da18b2fa998d3d5a"},
-    {file = "mysql_connector_python-8.3.0-cp312-cp312-manylinux_2_17_x86_64.whl", hash = "sha256:de0f2f2baa9e091ca8bdc4a091f874f9cd0b84b256389596adb0e032a05fe9f9"},
-    {file = "mysql_connector_python-8.3.0-cp312-cp312-win_amd64.whl", hash = "sha256:27f8be2087627366a44a6831ec68b568c98dbf0f4ceff24682d90c21db6e0f1f"},
-    {file = "mysql_connector_python-8.3.0-cp38-cp38-macosx_13_0_x86_64.whl", hash = "sha256:ec6dc3434a7deef74ab04e8978f6c5e181866a5423006c1b5aec5390a189d28d"},
-    {file = "mysql_connector_python-8.3.0-cp38-cp38-manylinux_2_17_aarch64.whl", hash = "sha256:73ee8bc5f9626c42b37342a91a825cddb3461f6bfbbd6524d8ccfd3293aaa088"},
-    {file = "mysql_connector_python-8.3.0-cp38-cp38-manylinux_2_17_x86_64.whl", hash = "sha256:1db5b48b4ff7d24344217ed2418b162c7677eec86ab9766dc0e5feae39c90974"},
-    {file = "mysql_connector_python-8.3.0-cp38-cp38-win_amd64.whl", hash = "sha256:77bae496566d3da77bb0e938d89243103d20ee41633f626a47785470451bf45c"},
-    {file = "mysql_connector_python-8.3.0-cp39-cp39-macosx_13_0_arm64.whl", hash = "sha256:f7acacdf9fd4260702f360c00952ad9a9cc73e8b7475e0d0c973c085a3dd7b7d"},
-    {file = "mysql_connector_python-8.3.0-cp39-cp39-macosx_13_0_x86_64.whl", hash = "sha256:5f707a9b040ad4700fc447ba955c78b08f2dd5affde37ac2401918f7b6daaba3"},
-    {file = "mysql_connector_python-8.3.0-cp39-cp39-manylinux_2_17_aarch64.whl", hash = "sha256:125714c998a697592bc56cce918a1acc58fadc510a7f588dbef3e53a1920e086"},
-    {file = "mysql_connector_python-8.3.0-cp39-cp39-manylinux_2_17_x86_64.whl", hash = "sha256:7f4f5fa844c19ee3a78c4606f6e138b06829e75469592d90246a290c7befc322"},
-    {file = "mysql_connector_python-8.3.0-cp39-cp39-win_amd64.whl", hash = "sha256:de5c3ee89d9276356f93df003949d3ba4c486f32fec9ec9fd7bc0caab124d89c"},
-    {file = "mysql_connector_python-8.3.0-py2.py3-none-any.whl", hash = "sha256:e868ccc7ad9fbc242546db04673d89cee87d12b8139affd114524553df4e5d6a"},
-]
-
-[package.extras]
-dns-srv = ["dnspython (>=1.16.0,<=2.3.0)"]
-fido2 = ["fido2 (==1.1.2)"]
-gssapi = ["gssapi (>=1.6.9,<=1.8.2)"]
-opentelemetry = ["Deprecated (>=1.2.6)", "typing-extensions (>=3.7.4)", "zipp (>=0.5)"]
-
-[[package]]
 name = "nodeenv"
 version = "1.8.0"
 description = "Node.js virtual environment builder"
@@ -816,6 +829,21 @@ docs = ["sphinx (>=4.5.0,<5.0.0)", "sphinx-rtd-theme", "zope.interface"]
 tests = ["coverage[toml] (==5.0.4)", "pytest (>=6.0.0,<7.0.0)"]
 
 [[package]]
+name = "pymysql"
+version = "1.1.0"
+description = "Pure Python MySQL Driver"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "PyMySQL-1.1.0-py3-none-any.whl", hash = "sha256:8969ec6d763c856f7073c4c64662882675702efcb114b4bcbb955aea3a069fa7"},
+    {file = "PyMySQL-1.1.0.tar.gz", hash = "sha256:4f13a7df8bf36a51e81dd9f3605fede45a4878fe02f9236349fd82a3f0612f96"},
+]
+
+[package.extras]
+ed25519 = ["PyNaCl (>=1.4.0)"]
+rsa = ["cryptography"]
+
+[[package]]
 name = "pyproject-api"
 version = "1.6.1"
 description = "API to interact with the python pyproject.toml based projects"
@@ -836,13 +864,13 @@ testing = ["covdefaults (>=2.3)", "pytest (>=7.4)", "pytest-cov (>=4.1)", "pytes
 
 [[package]]
 name = "pyright"
-version = "1.1.355"
+version = "1.1.356"
 description = "Command line wrapper for pyright"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyright-1.1.355-py3-none-any.whl", hash = "sha256:bf30b6728fd68ae7d09c98292b67152858dd89738569836896df786e52b5fe48"},
-    {file = "pyright-1.1.355.tar.gz", hash = "sha256:dca4104cd53d6484e6b1b50b7a239ad2d16d2ffd20030bcf3111b56f44c263bf"},
+    {file = "pyright-1.1.356-py3-none-any.whl", hash = "sha256:a101b0f375f93d7082f9046cfaa7ba15b7cf8e1939ace45e984c351f6e8feb99"},
+    {file = "pyright-1.1.356.tar.gz", hash = "sha256:f05b8b29d06b96ed4a0885dad5a31d9dff691ca12b2f658249f583d5f2754021"},
 ]
 
 [package.dependencies]
@@ -1008,4 +1036,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "26394315ce6cc8c48c40947ee97a68bcdbb76fcde33648e4d1f230fc5fa93ed4"
+content-hash = "e2c035e3e957b8d06f361fa78ba8366a592ff638c035d9f892241d363e1af3d8"

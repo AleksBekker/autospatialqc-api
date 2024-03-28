@@ -13,7 +13,7 @@ Additionally, it directly exports the following objects:
 
 import logging
 from http import HTTPStatus
-from typing import Any, Mapping
+from typing import Any, Mapping, Optional
 
 import flask
 import pymysql
@@ -36,7 +36,7 @@ __all__ = [
 ]
 
 
-def create_app(test_config: Mapping[str, Any] | None = None) -> flask.Flask:
+def create_app(test_config: Optional[Mapping[str, Any]] = None) -> flask.Flask:
     """Create main Flask app.
 
     Arguments:

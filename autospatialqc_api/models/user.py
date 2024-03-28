@@ -3,7 +3,7 @@ from __future__ import annotations
 from enum import IntFlag, auto
 from functools import reduce
 from operator import or_ as bit_or
-from typing import Iterable
+from typing import Optional
 
 import pydantic
 
@@ -60,5 +60,5 @@ class User(pydantic.BaseModel):
     permissions: Permissions
 
     authenticated: bool = False
-    first_name: str | None = None
-    last_name: str | None = None
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None

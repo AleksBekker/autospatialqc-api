@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from http import HTTPStatus
+from typing import Union
 
 from flask import Response, make_response
 
@@ -57,5 +58,5 @@ class ResponseError(Exception):
         super().__init__(*args)
 
     @classmethod
-    def make_response(cls, response_message: str, code: int | HTTPStatus, *args) -> ResponseError:
+    def make_response(cls, response_message: str, code: Union[int, HTTPStatus], *args) -> ResponseError:
         return cls(make_response(response_message, code), *args)

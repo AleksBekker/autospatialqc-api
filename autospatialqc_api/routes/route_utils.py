@@ -1,6 +1,6 @@
 from http import HTTPStatus
 from logging import Logger
-from typing import Any
+from typing import Any, Dict, Optional
 
 from flask import Request, make_response
 
@@ -8,7 +8,7 @@ from autospatialqc_api.models.errors import ResponseError
 from autospatialqc_api.models.user import Permissions, User
 
 
-def require_permission(user: User, permission: Permissions, logger: Logger | None = None):
+def require_permission(user: User, permission: Permissions, logger: Optional[Logger] = None):
     """Require a permission.
 
     Arguments:
@@ -47,7 +47,7 @@ def require_permission(user: User, permission: Permissions, logger: Logger | Non
     return None
 
 
-def require_data_item(request: Request, key: str, logger: Logger | None = None) -> Any:
+def require_data_item(request: Request, key: str, logger: Optional[Logger] = None) -> Any:
     """Require an item in the request JSON.
 
     Arguments:
@@ -79,7 +79,7 @@ def require_data_item(request: Request, key: str, logger: Logger | None = None) 
     return value
 
 
-def require_data(request: Request, *keys: str, logger: Logger | None = None, **aliases: str) -> dict[str, Any]:
+def require_data(request: Request, *keys: str, logger: Optional[Logger] = None, **aliases: str) -> Dict[str, Any]:
     """Require data in the request JSON.
 
     Arguments:
@@ -95,8 +95,10 @@ def require_data(request: Request, *keys: str, logger: Logger | None = None, **a
         ResponseError: if any of the required keys are missing.
     """
 
-    return {key: require_data_item(request, key, logger=logger) for key in keys} \
-        | {alias: require_data_item(request, var, logger=logger) for alias, var in aliases.items()}
+    return {
+        **{key: require_data_item(request, key, logger=logger) for key in keys},
+        **{alias: require_data_item(request, var, logger=logger) for alias, var in aliases.items()},
+    }
 
 
 def require_arg(request: Request, key: str) -> str:

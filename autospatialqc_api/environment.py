@@ -11,13 +11,14 @@ This file's main use is as an imported module, which contains the following obje
 """
 
 import os
+from typing import Dict, Optional
 
 from dotenv import dotenv_values
 
 _dotenv_variables = {**dotenv_values(".env.shared"), **dotenv_values(".env.secret")}
 
 
-def get_env(identifier: str) -> str | None:
+def get_env(identifier: str) -> Optional[str]:
     """Get an environmental variable.
 
     Arguments:
@@ -66,7 +67,7 @@ def require_env(identifier: str) -> str:
     return env_var
 
 
-def require_envs(*identifiers: str, **aliases: str) -> dict[str, str]:
+def require_envs(*identifiers: str, **aliases: str) -> Dict[str, str]:
     """Require some environmental variables.
 
     Arguments:
@@ -80,4 +81,7 @@ def require_envs(*identifiers: str, **aliases: str) -> dict[str, str]:
         RequiredEnvironmentalUnprovided: if any environmental variable is not provided.
     """
 
-    return {var: require_env(var) for var in identifiers} | {alias: require_env(var) for alias, var in aliases.items()}
+    return {
+        **{var: require_env(var) for var in identifiers},
+        **{alias: require_env(var) for alias, var in aliases.items()},
+    }

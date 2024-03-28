@@ -2,15 +2,11 @@ from http import HTTPStatus
 
 import flask
 from flask import Blueprint, jsonify, make_response, request
-from flask_jwt_extended import (create_access_token, get_jwt_identity,
-                                jwt_required)
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 from autospatialqc_api.models import Database, Permissions, User
-from autospatialqc_api.models.errors import (InvalidCredentials, ResponseError,
-                                             UserCollision, UserNotFound)
-from autospatialqc_api.routes.route_utils import (require_data,
-                                                  require_data_item,
-                                                  require_permission)
+from autospatialqc_api.models.errors import InvalidCredentials, ResponseError, UserCollision, UserNotFound
+from autospatialqc_api.routes.route_utils import require_data, require_data_item, require_permission
 
 blueprint = Blueprint("authentication", __name__)
 
@@ -65,6 +61,6 @@ def create_user():
     try:
         database.add_user(**data)
     except UserCollision as e:
-        raise ResponseError.make_response(f"User '{data["email"]}' already exists.", HTTPStatus.CONFLICT, str(e))
+        raise ResponseError.make_response(f"User '{data['email']}' already exists.", HTTPStatus.CONFLICT, str(e))
 
     return make_response("User created successfully.", HTTPStatus.OK)
