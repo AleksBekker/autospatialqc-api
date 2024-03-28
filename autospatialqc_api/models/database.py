@@ -1,16 +1,10 @@
-from functools import reduce
-from operator import or_ as binary_or
+from typing import List, Optional, Union
 
 import argon2
 import pymysql.cursors
 
-from autospatialqc_api.models.errors import (
-    InvalidCredentials,
-    SampleNameCollision,
-    SampleNotFound,
-    UserCollision,
-    UserNotFound,
-)
+from autospatialqc_api.models.errors import (InvalidCredentials, SampleNameCollision, SampleNotFound, UserCollision,
+                                             UserNotFound)
 from autospatialqc_api.models.sample import Sample
 from autospatialqc_api.models.user import Permissions, User
 
@@ -47,7 +41,7 @@ class Database:
             cursorclass=pymysql.cursors.DictCursor,
         )
 
-    def get_user(self, email: str, password: str | None = None) -> User:
+    def get_user(self, email: str, password: Optional[str] = None) -> User:
         """Finds a User from the database.
 
         Arguments:
@@ -104,11 +98,9 @@ class Database:
                     WHERE email = %s;
                 """
                 cursor.execute(sql, (email))
-                permissions = Permissions.from_str(*(dictionary["permission_name"] for dictionary in cursor.fetchall()))
+                return Permissions.from_str(*(dictionary["permission_name"] for dictionary in cursor.fetchall()))
 
-        return reduce(binary_or, permissions, Permissions.NONE)
-
-    def change_password(self, email: str, new_password: str | bytes):
+    def change_password(self, email: str, new_password: Union[str, bytes]):
         """Change a user's password.
 
         Arguments:
@@ -154,13 +146,15 @@ class Database:
                 cursor.execute(
                     """
                         INSERT INTO samples (assay, tissue, area, assigned_transcripts, cell_count, cell_over25_count,
-                            complexity, false_discovery_rate, median_counts, median_genes, reference_correlation, sparsity,
-                            volume, x_transcript_count, y_transcript_count, transcripts_per_area, transcripts_per_feature)
+                            complexity, false_discovery_rate, median_counts, median_genes, reference_correlation,
+                            sparsity, volume, x_transcript_count, y_transcript_count, transcripts_per_area,
+                            transcripts_per_feature)
 
                         VALUES (%(assay)s, %(tissue)s, %(area)s, %(assigned_transcripts)s, %(cell_count)s,
                             %(cell_over25_count)s, %(complexity)s, %(false_discovery_rate)s, %(median_counts)s,
-                            %(median_genes)s, %(reference_correlation)s, %(sparsity)s, %(volume)s, %(x_transcript_count)s,
-                            %(y_transcript_count)s, %(transcripts_per_area)s, %(transcripts_per_feature)s);
+                            %(median_genes)s, %(reference_correlation)s, %(sparsity)s, %(volume)s,
+                            %(x_transcript_count)s, %(y_transcript_count)s, %(transcripts_per_area)s,
+                            %(transcripts_per_feature)s);
                     """,
                     dict(sample),
                 )
@@ -213,7 +207,7 @@ class Database:
 
         return Sample.model_validate(results)
 
-    def add_permissions(self, user: User, permissions: list[str]):
+    def add_permissions(self, user: User, permissions: List[str]):
         """Add permissions to a user.
 
         Arguments:
@@ -240,7 +234,7 @@ class Database:
 
             connection.commit()
 
-    def delete_permissions(self, user: User, permissions: list[str]):
+    def delete_permissions(self, user: User, permissions: List[str]):
         """Remove permissions from a user.
 
         Arguments:
@@ -264,7 +258,7 @@ class Database:
 
             connection.commit()
 
-    def add_user(self, email: str, password: str, permissions: list[str], first_name: str, last_name: str):
+    def add_user(self, email: str, password: str, permissions: List[str], first_name: str, last_name: str):
         """Adds a new user to the database.
 
         Arguments:

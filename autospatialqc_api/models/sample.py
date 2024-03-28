@@ -1,10 +1,12 @@
+from typing import List, Optional
+
 import pydantic
 
 
 class Sample(pydantic.BaseModel):
     """Represents a sample."""
 
-    id: int | None = None
+    id: Optional[int] = None
 
     assay: str
     tissue: str
@@ -28,7 +30,7 @@ class Sample(pydantic.BaseModel):
     transcripts_per_feature: float
 
     @classmethod
-    def data_fields(cls) -> list[str]:
+    def data_fields(cls) -> List[str]:
         """Gets the list of the names of the most important data fields of a Sample."""
 
         return [
